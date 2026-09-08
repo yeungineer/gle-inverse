@@ -27,24 +27,24 @@ PANEL_LABEL_REFERENCE_WIDTH = 7.48
 PANEL_LABEL_REFERENCE_SIZE = 9.0
 SAVE_PADDING_INCHES = 0.10
 
-# Muted line colors; markers and dashes provide a second visual distinction.
+# MATLAB classic line colors; markers and dashes provide a second visual distinction.
 COLORS = {
     "truth": "#202020",
-    "estimate": "#2166AC",
-    "estimate_band": "#2166AC",
-    "brownian": "#2166AC",
-    "levy": "#B34446",
-    "empirical": "#2166AC",
+    "estimate": "#0072BD",
+    "estimate_band": "#0072BD",
+    "brownian": "#0072BD",
+    "levy": "#D95319",
+    "empirical": "#0072BD",
     "uncorrected": "#777777",
     "neutral_light": "#BBBBBB",
-    "blue": "#2166AC",
-    "blue_fill": "#2166AC",
+    "blue": "#0072BD",
+    "blue_fill": "#0072BD",
     "gray": "#6B6B6B",
     "gray_fill": "#6B6B6B",
-    "red": "#B34446",
-    "red_fill": "#B34446",
-    "teal": "#32888A",
-    "teal_fill": "#32888A",
+    "red": "#D95319",
+    "red_fill": "#D95319",
+    "teal": "#77AC30",
+    "teal_fill": "#77AC30",
     "neutral": "#444444",
 }
 
@@ -153,9 +153,9 @@ def apply_publication_style() -> None:
     _ensure_latex()
     mpl.rcParams.update({
         "text.usetex": True,
-        "text.latex.preamble": r"\usepackage{amsmath,amssymb,bm,mathpazo}",
+        "text.latex.preamble": r"\usepackage{amsmath,amssymb,bm}",
         "font.family": "serif",
-        "font.serif": ["Palatino"],
+        "font.serif": ["Computer Modern Roman"],
         "font.size": 9.0,
         "axes.labelsize": 10.0,
         "axes.titlesize": 9.0,
@@ -176,7 +176,7 @@ def apply_publication_style() -> None:
         "legend.fontsize": 7.5,
         "legend.frameon": True,
         "legend.fancybox": False,
-        "legend.framealpha": 0.95,
+        "legend.framealpha": 0.30,
         "legend.facecolor": "white",
         "legend.edgecolor": "none",
         "legend.shadow": False,

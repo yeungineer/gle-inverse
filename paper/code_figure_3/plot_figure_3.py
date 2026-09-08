@@ -202,7 +202,7 @@ def _panel_fixed_L(axis, data, metadata, settings) -> None:
     axis.set_yscale("log")
     axis.set_xlabel(r"$M$")
     axis.set_ylabel(r"$E_\gamma$")
-    axis.legend(loc="upper center", ncol=len(curves), fontsize=7.0, columnspacing=0.55, handlelength=1.0, handletextpad=0.3)
+    axis.legend(loc="upper center", ncol=len(curves), fontsize=6.3, columnspacing=0.55, handlelength=1.0, handletextpad=0.3)
 
 
 def make_figure(

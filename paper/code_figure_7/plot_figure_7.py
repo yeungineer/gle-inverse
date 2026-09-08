@@ -108,6 +108,14 @@ def make_figure(data_path: str | Path, metadata_path: str | Path, output_dir: st
                 loc="lower center" if column == 0 else "upper right",
                 fontsize=6.7, handlelength=2.0, labelspacing=0.25, borderpad=0.3,
             )
+    # Use the same range and ticks for each requested pair, retaining all curves.
+    for column in (0, 2):
+        pair = axes[:, column]
+        lower = min(axis.get_ylim()[0] for axis in pair)
+        upper = max(axis.get_ylim()[1] for axis in pair)
+        for axis in pair:
+            axis.set_ylim(lower, upper)
+            axis.yaxis.set_major_locator(mticker.MaxNLocator(nbins=5))
     outputs = save_publication_figure(figure, output_dir, stem, dpi=int(dpi), creator="GLE inverse paper Figure 7 workflow")
     plt.close(figure)
     return outputs

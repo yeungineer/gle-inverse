@@ -26,14 +26,14 @@ SAVE_PADDING_INCHES = 0.10
 
 PAPER_COLORS = {
     "black": "#1F1F1F",
-    "blue": "#0072B2",
-    "orange": "#D55E00",
-    "green": "#009E73",
-    "pink": "#CC79A7",
-    "purple": "#CC79A7",
-    "sky": "#56B4E9",
-    "yellow": "#E69F00",
-    "violet": "#6F4C9B",
+    "blue": "#0072BD",
+    "orange": "#D95319",
+    "green": "#77AC30",
+    "pink": "#7E2F8E",
+    "purple": "#7E2F8E",
+    "sky": "#4DBEEE",
+    "yellow": "#EDB120",
+    "violet": "#7E2F8E",
 }
 
 LATEX_PREAMBLE = (
@@ -44,7 +44,7 @@ LATEX_PREAMBLE = (
 
 PAPER_STYLE = {
     "font.family": "serif",
-    "font.serif": ["Times New Roman"],
+    "font.serif": ["Computer Modern Roman"],
     "text.latex.preamble": LATEX_PREAMBLE,
     "font.size": 7.0,
     "axes.labelsize": 8.0,

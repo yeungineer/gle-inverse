@@ -68,7 +68,7 @@ def _panel_sigma(axis, data, metadata, prefix, *, levy=False):
     axis.set_ylim(float(np.min(values)) - margin, float(np.max(values)) + margin)
     axis.set_xlabel(r"$v$")
     axis.set_ylabel(r"$\sigma(v)$")
-    axis.legend(loc="lower left")
+    axis.legend(loc="lower left", fontsize=7.0, handlelength=1.8)
 
 
 def _panel_kernel(axis, data, metadata, prefix):
@@ -129,13 +129,15 @@ def _panel_levy_trajectory(axis, data, metadata):
         facecolors="none",
         edgecolors=COLORS["levy"],
         linewidths=0.8,
-        label=rf"Exceedances ({len(jump_time)})",
+        label=r"$|\Delta v|\geq\varepsilon$",
         zorder=4,
     )
     axis.set_xlabel(r"$t$")
     axis.set_ylabel(r"$v(t)$")
     axis.set_xlim(0.0, 200.0)
-    axis.legend(loc="lower left")
+    lower, upper = axis.get_ylim()
+    axis.set_ylim(lower, upper + 0.15 * (upper - lower))
+    axis.legend(loc="lower left", fontsize=7.0, handlelength=1.8)
     axis.text(
         0.03,
         0.96,

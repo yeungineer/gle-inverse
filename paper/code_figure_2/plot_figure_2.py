@@ -146,7 +146,7 @@ def _kernel_cost_axis(axis, data, *, metric, scale, xlabel, decimals) -> None:
         axis.annotate(
             rf"${_compact_value(median, int(decimals))}$",
             xy=(median, positions[method]),
-            xytext=((-6.0 if annotate_left else 6.0), 0.0),
+            xytext=((-9.0 if annotate_left else 10.0), 0.0),
             textcoords="offset points",
             ha=("right" if annotate_left else "left"),
             va="center",
