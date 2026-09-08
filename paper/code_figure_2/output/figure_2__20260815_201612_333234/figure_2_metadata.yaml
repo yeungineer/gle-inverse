@@ -1,0 +1,6 @@
+kernel_time_window:
+- 0.0
+- 30.0
+kernel_value_window:
+- -0.4
+- 2.1

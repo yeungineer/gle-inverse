@@ -1,0 +1,53 @@
+
+figure:
+  stem: Figure_2
+  dpi: 600
+  kernel_time_window: [0.0, 30.0]
+  kernel_value_window: [-0.4, 2.1]
+
+source: run/configs/kramers_moyal_brownian.yaml
+
+common_task:
+  seed: 42
+  dt: 0.01
+  L: 3000
+  M: 1000
+  kernel_type: complex_exp
+  force_type: zero
+  noise_type: brownian
+  diffusion: constant
+  observation_noise: 0.0
+
+proposed:
+  km_samples: euler_oracle
+  basis_count: 12
+
+prony_sobolev:
+  initial_velocity_std: 1.0
+  prony:
+    sample_count: 24
+    modes: 10
+    lag_stride: 70
+    drop_zero: true
+  sobolev:
+    omega: 0.05
+    t_max: 30.0
+    knot_count: 30
+    grid_count: 2001
+
+
+vroylandt_em:
+  hidden_dimension: 5
+  initialization_seed: 42
+  evaluation_t_max: 30.0
+  evaluation_grid_count: 2001
+  em:
+    likelihood_tolerance: 1.0e-8
+    max_iterations: 2000
+    minimum_iterations: 2
+    covariance_floor: 1.0e-10
+
+
+kernel_cost:
+  repetitions: 6
+  poll_interval_seconds: 0.0005

@@ -1,0 +1,32 @@
+seed: 42
+protocols:
+- euler_oracle
+- fine_branch
+- replay_branch
+errors:
+  brownian:
+    euler_oracle:
+      sigma: 0.009501150547971215
+      gamma: 0.05023317923199624
+      memory: 0.011056966211336266
+    fine_branch:
+      sigma: 0.009264720490390245
+      gamma: 0.132948407254411
+      memory: 0.012481178605230483
+    replay_branch:
+      sigma: 0.017753536114658956
+      gamma: 0.15030092981815238
+      memory: 0.030549107973373606
+  brownian_levy:
+    euler_oracle:
+      sigma: 0.009670122276957892
+      gamma: 0.07464932505566188
+      memory: 0.013418647305639308
+    fine_branch:
+      sigma: 0.00460033888485628
+      gamma: 0.07773336575427517
+      memory: 0.0138700396906595
+    replay_branch:
+      sigma: 0.016024814675775705
+      gamma: 0.14945130133657733
+      memory: 0.031514962472516
