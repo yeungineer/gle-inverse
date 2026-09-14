@@ -1,0 +1,28 @@
+
+figure:
+  stem: Figure_5
+  dpi: 600
+  seeds: [10, 11, 12, 13, 14, 15]
+
+experiment:
+  km_samples: euler_oracle
+  diffusion_type: cosine
+  dt: 0.01
+  N: 12
+  test_seed_offset: 70000000
+
+  external_force:
+    force_types: [zero, sin, bistable]
+    M: 2000
+    L: 3000
+    test_L: 6000
+
+  phase_map:
+    force_type: zero
+    joint_error_unacceptable_threshold: 0.5
+    sigma_error_unacceptable_threshold: 0.5
+    alpha_values: [0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8]
+    kappa_values: [0.04, 0.08, 0.12, 0.18, 0.24]
+    M: 2000
+    L: 3000
+    seed: 42

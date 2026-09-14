@@ -1,0 +1,68 @@
+model: brownian
+sigma:
+  absolute_l2_error: 0.014184360049344098
+  relative_l2_error: 0.009501150547971215
+  estimator:
+    method: neural_network
+    hidden_dim: 64
+    hidden_layers: 3
+    activation: gelu
+    learning_rate: 0.002
+    epochs: 500
+    lbfgs_max_iter: 100
+first_moment:
+  empirical_absolute_l2_error: 10.303310008810977
+  empirical_relative_l2_error: 0.17088737896631645
+  fitted_absolute_l2_error: 0.6666522883739182
+  fitted_relative_l2_error: 0.011056879987566513
+kernel:
+  absolute_l2_error: 0.09956865711170168
+  relative_l2_error: 0.05023317923199624
+regularization:
+  mode: r1gcv
+  penalty_type: rkhs
+  inverse_memory_quadrature: left_rectangle
+  response_assembly: left_rectangle_history_convolution
+  selected_lambda: 1.6580094590373629
+  selection_score: 0.03546201650181792
+  gcv_score: 0.035490833094933116
+  r1gcv_robustness: 0.999
+  score_relative_rise_one_decade: 0.0003789397035101061
+  search_expansion_count: 0
+  search_expansion_direction: null
+  selected_at_search_boundary: false
+  spectral_diagnostics:
+    minimum_singular_value: 0.010742432207142646
+    maximum_singular_value: 1360.9169513742797
+    numerical_rank: 12
+    spectral_dimension: 12
+    condition_number: 126686.11028975408
+    energy_entropy_effective_rank: 3.7742456492412533
+    regularization_filter_ratio: 0.9999304034017061
+    estimated_noise_standard_deviation: 0.18804376043786555
+    weak_mode_snr_threshold: 1.0
+    retained_filter_threshold: 0.5
+    weak_mode_retained: false
+    weak_retained_mode_indices: []
+conditional_samples:
+  M: 2000
+  generation_method: euler_oracle
+  generation_substeps: 1
+  generation_internal_dt: 0.01
+  increment_storage_mib: 45.7611083984375
+  moment_aggregation_seconds: null
+moment_transform: {}
+inverse_system:
+  response_rows: 2999
+  response_columns: 12
+inference_data:
+  phase1:
+    L: 3000
+    observation_points: 3001
+    t_start: 0.0
+    t_end: 30.0
+  phase2:
+    L: 3000
+    observation_points: 3001
+    t_start: 0.0
+    t_end: 30.0

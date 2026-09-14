@@ -1,0 +1,49 @@
+plot_seeds:
+- 10
+- 11
+- 12
+- 13
+- 14
+- 15
+figure_style:
+  iqr_alpha: 0.62
+panels:
+  c:
+    display_L_values:
+    - 3000
+    - 6000
+    - 9000
+scientific_configuration:
+  kernel_reconstruction:
+    num_basis: 12
+    t_max: 30.0
+  core:
+    dt: 0.01
+    reference_rows: 3000
+    diffusion_type: constant
+  sampling_M:
+    values:
+    - 1000
+    - 3000
+    - 5000
+    - 7000
+  fixed_L:
+    curves:
+    - L: 3000
+      M_values:
+      - 250
+      - 500
+      - 750
+      - 1000
+    - L: 6000
+      M_values:
+      - 250
+      - 500
+      - 750
+      - 1000
+    - L: 9000
+      M_values:
+      - 250
+      - 500
+      - 750
+      - 1000

@@ -1,0 +1,18 @@
+
+figure:
+  stem: Figure_7
+  dpi: 600
+  seed: 42
+  state_quantiles: [0.01, 0.99]
+  memory_time_window: [2.0, 16.0]
+
+experiment:
+  dt: 0.01
+  L: 3000
+  preparation_time: 5.0
+  M: 2000
+  N: 12
+  cases:
+    brownian: {diffusion: cosine}
+    brownian_levy: {diffusion: cosine}
+  protocols: [euler_oracle, fine_branch, replay_branch]

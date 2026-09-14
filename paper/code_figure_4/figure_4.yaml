@@ -1,0 +1,18 @@
+
+figure:
+  stem: Figure_4
+  dpi: 600
+  seeds: [10, 11, 12, 13, 14, 15]
+  iqr_alpha: 0.07
+
+experiment:
+  km_samples: euler_oracle
+  diffusion_types:
+    brownian: constant
+    brownian_levy: cosine
+  dt: 0.01
+  M: 2000
+  L: 3000
+  N: 12
+  noise_levels: [0.0, 0.005, 0.01, 0.02, 0.05, 0.10]
+  routes: [endpoint, start_endpoint, full_path]

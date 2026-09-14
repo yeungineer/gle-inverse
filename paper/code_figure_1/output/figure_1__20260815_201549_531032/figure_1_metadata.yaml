@@ -1,0 +1,14 @@
+cases:
+  brownian:
+    representative:
+      sigma_mu_relative_error: 0.007310368860755422
+      kernel_relative_error: 0.04990881696177041
+      memory_force_relative_error: 0.012826584838571022
+  brownian_levy:
+    representative:
+      sigma_mu_relative_error: 0.009670122276957892
+      kernel_relative_error: 0.07464932505566188
+      memory_force_relative_error: 0.013418647305639308
+      sigma_without_correction_relative_error: 0.049314546370821756
+      alpha_est: 1.58670635104394
+      kappa_est: 0.1199692112367642

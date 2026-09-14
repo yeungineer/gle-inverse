@@ -1,0 +1,38 @@
+plot_seeds:
+- 10
+- 11
+- 12
+- 13
+- 14
+- 15
+figure_style:
+  iqr_alpha: 0.56
+experiment:
+  km_samples: euler_oracle
+  dt: 0.01
+  kernel_type: power_law
+  force_type: zero
+  diffusion_type: constant
+  kernel_display_t_max: 20.0
+  N: 20
+  inverse_discretization:
+    basis_rule: cubic_spline_generic_volterra
+    knot_count: 20
+    quadrature: left_rectangle
+    near_zero_t_max: 1.0
+  M_values:
+  - 1000
+  - 2000
+  - 3000
+  - 5000
+  - 8000
+  L_values:
+  - 3000
+  - 4000
+  - 5000
+  - 8000
+  displayed_pairs:
+  - - 2000
+    - 3000
+  - - 5000
+    - 4000
