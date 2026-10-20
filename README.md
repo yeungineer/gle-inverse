@@ -1,49 +1,31 @@
 # GLE Inverse
 
-This repository accompanies *History-Conditioned Inference of Memory and Stochastic Forcing in Generalized Langevin Equations under Lévy Noise*. It implements a history-conditioned Kramers–Moyal inverse framework for separating memory drift, state-dependent Brownian fluctuations, and optional symmetric α-stable Lévy jumps, with the memory kernel recovered through RKHS-regularized Volterra inversion.
+Code for *History-Conditioned Inference of Memory and Stochastic Forcing in Generalized Langevin Equations under Lévy Noise*. All data are simulated.
 
-## Install
-
-Python 3.10 or later is required.
+Use Python 3.10. Plotting needs LaTeX with `amsmath`, `amssymb` and `bm`.
 
 ```bash
-python3 -m pip install -r requirements.txt
+pip install numpy==2.2.6 scipy==1.15.3 torch==2.13.0 \
+  matplotlib==3.10.9 PyYAML==6.0.3 psutil==7.2.2
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1
 ```
 
-## Main workflow
+The model, numerical methods and baselines are in `model/`. Run a basic experiment from the repository root:
 
 ```bash
-python3 run/run_kramers_moyal.py
-python3 run/run_kramers_moyal.py --config run/configs/kramers_moyal_brownian_levy.yaml
+python run.py --config brownian.yaml --output results/Brownian
+python run.py --plot results/Brownian
 ```
 
-## Paper figures
+Use `brownian_levy.yaml` for Lévy noise. Each `experiments/figureX_*.py` contains that figure's parameters and seeds, calculation (`run`), and plotting (`plot`).
 
-Figures 1–7 each have a runner in `paper/code_figure_<n>/`.
-
-Generate data and plot a figure:
+Replace `1` below with any figure number from 1 to 7. Choose a new output directory for each computation.
 
 ```bash
-python3 paper/code_figure_1/run_figure_1.py
+python experiments/run.py 1 --output results/Figure1_new
+python experiments/run.py 1 --plot --input results/Figure1_new
+# Redraw the supplied results without recomputing:
+python experiments/run.py 1 --plot --output results/Figure1_redrawn
 ```
 
-Plot an existing run:
-
-```bash
-python3 paper/code_figure_1/run_figure_1.py \
-  --mode plot \
-  --run-dir paper/code_figure_1/output/<run-id>
-```
-
-The seeds used by each figure are listed directly in its `figure_<n>.yaml` file.
-
-Each run keeps only four files:
-
-```text
-figure_<n>_data.npz
-figure_<n>_metadata.yaml
-Figure_<n>.pdf
-Figure_<n>.png
-```
-
-Generation intermediates are temporary and are deleted before the run finishes.
+Saved paper data and figures are in `results/Figure1`–`Figure7`. New runs save parameters, arrays and metrics; plotting reads them and saves PDF/PNG. All figures share `model/style.py`.

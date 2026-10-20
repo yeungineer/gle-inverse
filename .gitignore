@@ -8,3 +8,7 @@ venv/
 .env
 .env.*
 !.env.example
+.ruff_cache/
+.idea/
+/results/*
+!/results/Figure[1-7]/
