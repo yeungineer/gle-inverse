@@ -232,7 +232,7 @@ def plot(data_path, metadata_path, output_dir, *, stem="Figure_3", dpi=600):
     panels[0].plot(x, guide, color=COLORS["truth"], linewidth=0.9, linestyle=(0, (3.0, 2.0)), label="$M^{-1/2}$", zorder=5)
     f3_linear_x(panels[0], x)
     panels[0].set_xticklabels([f"${int(value)}$" for value in x])
-    panels[0].set_yticks([0.01, 0.02, 0.03])
+    panels[0].set_yticks([0.01, 0.015, 0.02, 0.025, 0.03, 0.035])
     panels[0].set_ylim(0.0095, 0.038)
     use_fixed_exponent(panels[0], -2)
     panels[0].set_xlabel("$M$")

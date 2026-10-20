@@ -133,6 +133,23 @@ def add_panel_label(axis, label, *, x_offset_points=-3.0, y_offset_points=1.5):
 
 
 def save_publication_figure(figure, output_dir, stem, *, dpi=DEFAULT_DPI, creator="GLE inverse paper figure workflow"):
+    for ax in figure.axes:
+        lo, hi = sorted(ax.get_ylim())
+        ticks = ax.get_yticks()
+        if np.count_nonzero((ticks >= lo) & (ticks <= hi)) >= 4:
+            continue
+        if ax.get_yscale() == "log":
+            span = np.log10(hi / lo)
+            subs = (1, 2, 4, 6) if span < 1.5 else (1, 2, 5) if span < 2 else (1, 5)
+            ax.yaxis.set_major_locator(mticker.LogLocator(subs=subs))
+            power = int(np.floor(np.log10(hi))) if hi < 0.1 or hi >= 1000 else 0
+            formatter = mticker.FuncFormatter(lambda y, _, scale=10.0**power: f"${y / scale:g}$")
+            formatter.set_offset_string(rf"$\times10^{{{power}}}$" if power else "")
+            ax.yaxis.set_major_formatter(formatter)
+            ax.yaxis.set_minor_formatter(mticker.NullFormatter())
+            ax.yaxis.labelpad = 4.0
+        elif isinstance(ax.yaxis.get_major_locator(), mticker.MaxNLocator):
+            ax.yaxis.set_major_locator(mticker.MaxNLocator(nbins=5, min_n_ticks=4))
     dpi = int(dpi)
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
