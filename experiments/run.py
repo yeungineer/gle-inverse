@@ -1,46 +1,47 @@
-"""Run a paper experiment, or plot its saved results with --plot."""
+"""计算或重绘论文图 1–8。"""
 
+import argparse
+import importlib
+import os
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-import argparse
-from copy import deepcopy
-from datetime import datetime
-
-from experiments import figure1_reconstruction as f1
-from experiments import figure2_comparison as f2
-from experiments import figure3_sampling as f3
-from experiments import figure4_measurement as f4
-from experiments import figure5_robustness as f5
-from experiments import figure6_powerlaw as f6
-from experiments import figure7_preparation as f7
-from model.fit import load_config, save_yaml
+FIGURES = {
+    1: "figure1_reconstruction",
+    2: "figure2_basis",
+    3: "figure3_comparison",
+    4: "figure4_sampling",
+    5: "figure5_measurement",
+    6: "figure6_robustness",
+    7: "figure7_powerlaw",
+    8: "figure8_single_trajectory",
+}
 
 
 def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("figure", type=int, choices=range(1, 8))
-    parser.add_argument("--plot", action="store_true")
-    parser.add_argument("--input", type=Path)
-    parser.add_argument("--config", type=Path)
-    parser.add_argument("--output", type=Path)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("figure", type=int, nargs="+", choices=sorted(FIGURES))
+    parser.add_argument("--plot", action="store_true", help="Replot saved data using LaTeX")
+    parser.add_argument("--no-tex", action="store_true", help="Preview saved data without LaTeX")
+    parser.add_argument("--workers", type=int, default=1, help="Independent CPU experiment processes")
+    parser.add_argument("--device", default="cpu", help="PyTorch device for diffusion fitting, e.g. cpu or cuda:0")
+    parser.add_argument("--refresh-display", action="store_true", help="With 1 --plot: refresh the display paths")
     args = parser.parse_args()
-    n = args.figure
-    study = (f1, f2, f3, f4, f5, f6, f7)[n - 1]
-    if args.plot:
-        source = args.input or ROOT / "results" / f"Figure{n}"
-        out = args.output or source
-        study.plot(source / f"figure_{n}_data.npz", source / f"figure_{n}_metadata.yaml", out, stem=f"Figure_{n}", dpi=600)
-    else:
-        out = args.output or ROOT / "results" / f"Figure{n}_{datetime.now():%Y%m%d_%H%M%S_%f}"
-        out.mkdir(parents=True, exist_ok=False)
-        config = load_config(args.config) if args.config else deepcopy(study.PARAMS)
-        save_yaml(out / "parameters.yaml", config)
-        study.run(config, out)
-    print(out)
+    for name in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS", "VECLIB_MAXIMUM_THREADS"):
+        os.environ[name] = "1"
+    for number in args.figure:
+        module = importlib.import_module(f"experiments.{FIGURES[number]}")
+        out = ROOT / "results" / f"Figure{number}"
+        if not args.plot:
+            out.mkdir(parents=True, exist_ok=True)
+            module.run(out, workers=args.workers, device=args.device)
+        if args.refresh_display and number == 1:
+            module.refresh_display_paths(out)
+        module.plot(out, use_tex=args.plot and not args.no_tex)
+        print(out, flush=True)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,32 @@
+vroylandt_em_iterations: 308
+error_windows:
+- - 0.0
+  - 10.0
+- - 10.0
+  - 20.0
+- - 20.0
+  - 30.0
+simulation:
+  seed: 42
+  dt: 0.01
+  substeps: 5
+  L: 3000
+  num_paths: 1000
+ours:
+  kernel_error: 0.03426440148414872
+  window_relative_errors:
+  - 0.013504030293412423
+  - 0.11819802114584052
+  - 0.759698359262021
+prony_sobolev:
+  kernel_error: 0.07409757418585695
+  window_relative_errors:
+  - 0.05726069881142218
+  - 0.32320150381791185
+  - 0.4459867887283419
+vroylandt_em:
+  kernel_error: 0.37982081669036816
+  window_relative_errors:
+  - 0.3190709204446307
+  - 1.4721541530139033
+  - 1.3967243683143684

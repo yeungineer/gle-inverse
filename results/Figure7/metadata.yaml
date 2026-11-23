@@ -1,0 +1,24 @@
+seeds:
+- 37
+- 38
+- 39
+- 40
+- 41
+- 42
+- 43
+- 44
+- 45
+- 46
+forces:
+- zero
+- linear
+- sin
+powerlaw_display_t: 10.0
+condition_K: 12
+condition_a: 0.5
+rate_bin_count: 6
+rate_bin_ratio: 1.4142135623730951
+diffusion: cosine in both noise models
+sigma_range:
+- -2
+- 2

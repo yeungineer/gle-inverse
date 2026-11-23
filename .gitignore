@@ -10,5 +10,6 @@ venv/
 !.env.example
 .ruff_cache/
 .idea/
+/manuscript/
 /results/*
-!/results/Figure[1-7]/
+!/results/Figure[1-8]/

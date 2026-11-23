@@ -1,0 +1,79 @@
+simulation:
+  seed: 42
+  dt: 0.01
+  substeps: 5
+  L: 2020000
+  num_paths: 1
+warmup: 200.0
+fit_T: 20000.0
+fit_intervals: 2000000
+sigma_state_count: 1995429
+display_steps:
+- 20000
+- 40000
+display_exceedances: 4
+cross_validation:
+  scheme: expanding time blocks
+  folds: 5
+  K_grid:
+  - 4
+  - 6
+  - 8
+  - 10
+  - 12
+  a_grid:
+  - 0.25
+  - 0.5
+  - 1.0
+  - 2.0
+  scores:
+  - - 71.3003423652282
+    - 71.29575418520156
+    - 71.29509388042254
+    - 71.29550356684348
+    - 71.29554130250317
+  - - 71.29704673316417
+    - 71.29554638926331
+    - 71.295291417107
+    - 71.29542442788906
+    - 71.29584016837721
+  - - 71.31192432997673
+    - 71.29931889600846
+    - 71.29639843030468
+    - 71.296475759204
+    - 71.29563769860579
+  - - 71.31931025414664
+    - 71.31020690469498
+    - 71.30987048878914
+    - 71.3035213574162
+    - 71.2993211500428
+kernel:
+  absolute_l2_error: 0.04414987883341192
+  relative_l2_error: 0.022273964928759243
+  t_max: 30.0
+  K: 8
+  a: 0.25
+memory:
+  absolute_l2_error: 0.05898724958067236
+  relative_l2_error: 0.014629660391087913
+  t_min: 202.0
+  t_max: 216.0
+sigma:
+  absolute_l2_error: 0.028309724510846578
+  relative_l2_error: 0.01860752556721023
+  v_min: -2.0
+  v_max: 2.0
+levy:
+  alpha_true: 1.6
+  alpha_est: 1.4735936910103717
+  alpha_rel_error: 0.07900394311851772
+  kappa_true: 0.12
+  kappa_est: 0.08387283492590808
+  kappa_rel_error: 0.301059708950766
+  joint_rel_error: 0.301059708950766
+  annular_rate_rel_error_to_truth: 0.08734954310736404
+  annular_rate_rel_error_to_fit: 0.06437092375596742
+  tail_count: 215
+  epsilon: 1.0
+  exposure: 19983.07537675901
+  identified: true

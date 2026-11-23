@@ -1,0 +1,33 @@
+seeds:
+- 37
+- 38
+- 39
+- 40
+- 41
+- 42
+- 43
+- 44
+- 45
+- 46
+map_paths: 500
+threshold: 0.5
+alpha_values:
+- 0.2
+- 0.4
+- 0.6
+- 0.8
+- 1.0
+- 1.2
+- 1.4
+- 1.6
+- 1.8
+kappa_values:
+- 0.04
+- 0.08
+- 0.12
+- 0.18
+- 0.24
+aggregation: median of identified repetitions; missing counts shown separately
+sigma_range:
+- -2
+- 2
